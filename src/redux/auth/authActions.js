@@ -15,3 +15,5 @@ export const fetchUserDataError = createAction(actions.fetchUserDataError);
 export const logoutRequest = createAction(actions.logoutRequest);
 export const logoutSuccess = createAction(actions.logoutSuccess);
 export const logoutError = createAction(actions.logoutError);
+
+export const cancelError = createAction(actions.cancelError);

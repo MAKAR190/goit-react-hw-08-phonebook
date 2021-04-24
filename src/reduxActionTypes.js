@@ -23,5 +23,7 @@ const actionTypes = {
   fetchUserDataRequest: "auth/fetchUserDataRequest",
   fetchUserDataSuccess: "auth/fetchUserDataSuccess",
   fetchUserDataError: "auth/fetchUserDataError",
+  //! Errors
+  cancelError: "errors/cancelError",
 };
 export default actionTypes;

@@ -14,6 +14,7 @@ import {
 import { v4 } from "uuid";
 import contactsSelectors from "../redux/contacts/contactsSelectors";
 import Spinner from "../components/Spinner";
+import ErrorMessage from "@material-ui/lab/Alert";
 class Contacts extends Component {
   state = {
     alert: false,
@@ -55,7 +56,7 @@ class Contacts extends Component {
   };
   render() {
     const { alert } = this.state;
-    const { loading } = this.props;
+    const { loading, error } = this.props;
     return (
       <>
         <Layout title="Phonebook" />
@@ -71,6 +72,7 @@ class Contacts extends Component {
         </CSSTransition>
         <Alert alert={alert} />
         {loading && <Spinner />}
+        {error && <ErrorMessage severity="error">{error}</ErrorMessage>}
       </>
     );
   }
@@ -79,6 +81,7 @@ const mapStateToProps = (state) => {
   return {
     contacts: contactsSelectors.getVisibleContacts(state),
     loading: contactsSelectors.getLoading(state),
+    error: contactsSelectors.getErrors(state),
   };
 };
 const mapDispatchToProps = {

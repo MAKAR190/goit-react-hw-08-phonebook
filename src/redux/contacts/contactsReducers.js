@@ -23,9 +23,9 @@ const loadingReducer = createReducer(false, {
   [reduxActionTypes.fetchContactsError]: () => false,
 });
 const errorsReducer = createReducer(null, {
-  [reduxActionTypes.addContactError]: (_, { payload }) => payload,
-  [reduxActionTypes.fetchContactsError]: (_, { payload }) => payload,
-  [reduxActionTypes.deleteContactError]: (_, { payload }) => payload,
+  [reduxActionTypes.addContactError]: (_, { payload }) => payload.message,
+  [reduxActionTypes.fetchContactsError]: (_, { payload }) => payload.message,
+  [reduxActionTypes.deleteContactError]: (_, { payload }) => payload.message,
 });
 const filterReducer = createReducer(initialFilterState, {
   [reduxActionTypes.filter]: (_, action) => action.payload,

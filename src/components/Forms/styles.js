@@ -8,6 +8,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     margin: "0 auto",
     padding: "30px",
+    marginBottom: "10px",
   },
   field: {
     margin: "10px 0px 10px 0px",

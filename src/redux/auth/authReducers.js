@@ -10,18 +10,27 @@ const tokenReducer = createReducer(null, {
   [actions.logoutSuccess]: () => null,
   [actions.fetchUserDataError]: () => null,
 });
-const userReducer = createReducer(null, {
+const userReducer = createReducer(defaultUserState, {
   [actions.loginSuccess]: (_, { payload }) => payload.user,
   [actions.registerSuccess]: (_, { payload }) => payload.user,
   [actions.fetchUserDataSuccess]: (_, { payload }) => payload,
   [actions.logoutSuccess]: () => defaultUserState,
 });
-const errorsReducer = createReducer(null, {
+const loginErrorsReducer = createReducer(null, {
   [actions.loginError]: (_, { payload }) => payload.message,
   [actions.logoutError]: (_, { payload }) => payload.message,
+  [actions.cancelError]: () => null,
+});
+const registerErrorsReducer = createReducer(null, {
   [actions.fetchUserDataError]: (_, { payload }) => payload.message,
   [actions.registerError]: (_, { payload }) => payload.message,
+  [actions.cancelError]: () => null,
 });
+const fetchUserErrorsReducer = createReducer(null, {
+  [actions.fetchUserDataError]: (_, { payload }) => payload.message,
+  [actions.cancelError]: () => null,
+});
+
 const loadingReducer = createReducer(false, {
   [actions.loginRequest]: () => true,
   [actions.loginSuccess]: () => false,
@@ -40,5 +49,7 @@ export default combineReducers({
   user: userReducer,
   token: tokenReducer,
   loading: loadingReducer,
-  errors: errorsReducer,
+  errorsLogin: loginErrorsReducer,
+  errorsRegister: registerErrorsReducer,
+  errorsUserData: fetchUserErrorsReducer,
 });
